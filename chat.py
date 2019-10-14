@@ -1,7 +1,7 @@
 import models, json, random, requests_oauthlib, os
 
 # Twitter API setup
-url = "https://api.twitter.com/1.1/search/tweets.json?q=lauv"
+url = "https://api.twitter.com/1.1/search/tweets.json?q=inspirational"
 
 oauth = requests_oauthlib.OAuth1(
         os.getenv("N8GHmjLh4c4ErNnAz0XR8iQ5h"),
