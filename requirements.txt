@@ -2,7 +2,6 @@ Flask
 Flask-SQLAlchemy==2.1
 psycopg2
 flask_socketio
-postgresql
 flask_socketio
 psycopg2-binary
 webpack
