@@ -12,12 +12,6 @@ def index():
 
 @socketio.on('connect')
 def on_connect():
-    messages = models.Message.query.all()
-    chat = [m.text + '\n' for m in messages]
-    flask_socketio.emit('update', {
-        'data': 'Got your connection!',
-        'previous_messages': chat
-        
     print ('Someone connected!')
     global users
     users += 1
