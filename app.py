@@ -12,16 +12,17 @@ def index():
 
 @socketio.on('connect')
 def on_connect():
+    query()
     print ('Someone connected!')
     global users
     users += 1
 
     messages = models.Message.query.all()
     chat = [m.text + '\n' for m in messages]
-    flask_socketio.emit('update', {
-        'data': 'Got your connection!',
-        'previous_messages': chat
-    })
+    # flask_socketio.emit('update', {
+    #     'data': 'Got your connection!',
+    #     'previous_messages': chat
+    # })
 
 @socketio.on('disconnect')
 def on_disconnect():
