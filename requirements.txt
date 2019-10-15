@@ -9,3 +9,4 @@ eventlet
 rfc3987
 parse
 requests
+requests_oauthlib
