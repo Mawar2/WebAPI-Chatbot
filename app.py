@@ -14,6 +14,9 @@ def index():
 
 @socketio.on('connect')
 def on_connect():
+    socketio.emit("hello to client", {
+        'message': "Hey there!"
+    })
     query()
     print ('Someone connected!')
     global users
@@ -75,6 +78,6 @@ if __name__ == '__main__':
     socketio.run(
         app,
         host=os.getenv('IP', '0.0.0.0'),
-        port=int(os.getenv('PORT', 8082)),
+        port=int(os.getenv('PORT', 8085)),
         debug=True
     )
