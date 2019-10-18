@@ -3,8 +3,8 @@ import os, flask, flask_socketio, flask_sqlalchemy, psycopg2, app, chat
 #app = flask.Flask(__name__)
 #socketio = flask_socketio.SocketIO(app)
 
-app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://leaky:admin@localhost/postgres' 
-#app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+#app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://leaky:admin@localhost/postgres' 
+app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db = flask_sqlalchemy.SQLAlchemy(app.app)
 # creates a database objectç
 
