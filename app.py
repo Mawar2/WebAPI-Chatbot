@@ -14,9 +14,6 @@ def index():
 
 @socketio.on('connect')
 def on_connect():
-    socketio.emit("hello to client", {
-        'message': "Hey there!"
-    })
     query()
     print ('Someone connected!')
     global users
