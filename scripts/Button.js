@@ -20,6 +20,7 @@ export class Button extends React.Component {
         // this is a local variable so we don't need to initialize in the constructor
         console.log('Sending message: ', this.state.message);
         Socket.emit('new message', {'message': this.state.message, 'user_data': this.state.signin});
+       
         if (this.state.signin == true){
           Socket.emit('connect', {'connected_users': this.state.count});
         console.log('This confirms that a message was sent to server')

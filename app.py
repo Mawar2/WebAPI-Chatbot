@@ -1,6 +1,8 @@
 import os, flask, flask_socketio, flask_sqlalchemy
 import models, chat
 
+from chat import Chatbot
+
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
 users = 0
@@ -41,6 +43,7 @@ def query():
         'message': chat
     })
 
+#event handler
 @socketio.on('new message')
 def on_new_message(data):
     print('Data Recieved: ', data)
@@ -48,11 +51,23 @@ def on_new_message(data):
     models.db.session.add(new_message)
     models.db.session.commit()
 
+    #print(data['message'], 'TEST PLEASE')
+    #print(data)
     if data['message'][:2] == '!!':
-        chat_message = data['message'] 
-        bot_response = chatbot.Chatbot()
-        print("Chatbot message: " + chat_message)
-        response = bot_response.get_response(chat_message[2:])
+        
+        bot_response = Chatbot()
+        response = bot_response.get_response(data['message'])
+
+        # socketio.emit('Bot Message', {
+        #     'message': response
+        # })
+        #print(response, 'THIS IS ALSO A TEST TO SEE WHERE DATA IS')
+
+
+        # chat_message = data['message'] 
+        # bot_response = chatbot.Chatbot()
+        # print("Chatbot message: " + chat_message)
+        # response = bot_response.get_response(chat_message[2:])
     query()
 
 
@@ -60,6 +75,6 @@ if __name__ == '__main__':
     socketio.run(
         app,
         host=os.getenv('IP', '0.0.0.0'),
-        port=int(os.getenv('PORT', 8081)),
+        port=int(os.getenv('PORT', 8082)),
         debug=True
     )
