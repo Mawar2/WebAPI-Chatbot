@@ -1,10 +1,24 @@
 version: 2
 jobs:
   build:
-  command: |
-      python -m tests.unit_tests
+    docker:
+      - image: circleci/python:3.6.1
 
-- run:
-    name: deploy to heroku
-    command: |
-      git push https://heroku:060cc814-465a-43e5-a169-54ed973daff4@git.heroku.com/warm-bayou-03054.git master
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      
+      - run:
+          name: run tests
+          command: |
+            pip install requests
+            python -m tests.unit_tests
+      - run:
+          name: deploy to heroku
+          command: |
+            git push https://heroku:060cc814-465a-43e5-a169-54ed973daff4@git.heroku.com/warm-bayou-03054.git master
+
+
+
+ 

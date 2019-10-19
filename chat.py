@@ -12,7 +12,7 @@ oauth = requests_oauthlib.OAuth1(
 class Chatbot():
     def get_response(self, message):
         if message == '!! help':
-            chatbot_message = 'please select: |!! about | |!! weather |!! inspire .' 
+            chatbot_message = 'please select: |!! about | |!! weather |!! inspire  |!! temperature.' 
             return chatbot_message
         elif message == '!! about':
             chatbot_message = "My name is Jarvis! This application was created by a famous scientist named Dr. Warren in 2026. You can contact him at mawar2@icloud.com to make sure he did it.. this bot serves as a way to enjoy funny memes while doing homework!"
@@ -36,6 +36,13 @@ class Chatbot():
                 return('Clear skies right now! \n' + str(temp_data) + ' is the temperature right now!')
             else:
                 return(formatted_data + temp_data)
+        elif message == '!! temperature':
+            api_link = 'http://api.openweathermap.org/data/2.5/weather?appid=1b33742104dab9ec6e744eb014181193&q='
+            city = input("Your City Name : ")
+            url = api_link + city
+            json_data = requests.get(url).json()
+            temp_data = json_data['main']['temp']
+            return temp_data
 
         elif message == '!! inspire':
             response = requests.get(url, auth=oauth)
