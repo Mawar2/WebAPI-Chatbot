@@ -1,3 +1,10 @@
 version: 2
 jobs:
   build:
+  command: |
+      python -m tests.unit_tests
+
+- run:
+    name: deploy to heroku
+    command: |
+      git push https://heroku:060cc814-465a-43e5-a169-54ed973daff4@git.heroku.com/warm-bayou-03054.git master
