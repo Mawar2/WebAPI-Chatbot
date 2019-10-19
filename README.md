@@ -1,13 +1,16 @@
-● What is the theme you’ll be using for project 2?
- The theme of my project is "Bright side"
- 
-● How did you incorporate your theme within your project?
-   I incoporated the theme of my project by using the twitter api to render inspirational messages at the users request!
-   
-● What are at least 5 issues you encountered with your project? How did you fix them?
- 1) AWS locked me out of my project for a few days, which required me to do my project using visual studio code.
- 2) Visual Studio does not allow for you to install heroku directly from terminal. Fix was to locate an extension that uses Nodejs to deploy heroku
- 3) Had a challenge getting front-end messages to render. Fix was to collaborate with classmates and attend office hours.
- 4) Had a problem with Google's authentication, server timed out due to using a "localhost" with a port. Fix is still underway but I believe it gets fixed by replacing localhost and ports with my heroku server address
- 5) Chatbot is checking for "!!" keywords but is not displaying the chat message as anticipated. Possible Fix will be to emit directly from a chatbot class method.
 
+Explain decisions around placements of at least 5 different test cases (different
+locations)
+
+1) In my weather test, I tested to make sure that the api recieved a valid city. Prompts to enter a valid US city if failed.
+
+2) My bot also has a test for "!!", with that being a keyword it is activating the chatbot however I create a test case so that if the user is to activate the chatbot without a command that they will be notified that it's not a valid command.
+
+3) To test the !! inspire bot is just checking to make sure it returns pulled data from twitter.
+
+4) For socketio, I tested the connection of the socketio in my app.py file to validate that it is recieving a response.
+
+5) I also created a test case to make sure that socketio is emitting correctly. 
+
+
+In the future I would like to do multiple additional test to make sure that the database is recieveing the and emitting the correct data at any given time.
