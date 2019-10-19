@@ -1,7 +1,3 @@
-
-Explain decisions around placements of at least 5 different test cases (different
-locations)
-
 1) In my weather test, I tested to make sure that the api recieved a valid city. Prompts to enter a valid US city if failed.
 
 2) My bot also has a test for "!!", with that being a keyword it is activating the chatbot however I create a test case so that if the user is to activate the chatbot without a command that they will be notified that it's not a valid command.
